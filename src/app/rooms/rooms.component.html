@@ -1,0 +1,23 @@
+<div class="outer">
+
+  {{priceFilter | json}}
+  <div>
+    <input type="number" class="form-control" placeholder="Price" [formControl]="priceFilter"/>
+  </div>
+
+  <div class="button">
+    <!-- <button class="btn btn-primary" (click)="addRoom()">Add Room</button> -->
+    <button class="btn btn-primary" [routerLink]="['add']" >Add Room</button>
+    <button  class="btn btn-primary" (click)="editRoom()">Edit Rooms</button>
+    <button  class="btn btn-primary" (click)="deleteRoom()">Delete Room</button>\
+  </div>
+    <!-- {{rooms$ | async | json}} -->
+    <!-- <div class="inner" *ngIf="rooms$ | async as room">
+        <app-rooms-list [rooms]="room"></app-rooms-list>
+        <h3>{{getError$ | json}}</h3>
+    </div> -->   
+     <router-outlet></router-outlet>
+
+    <app-rooms-list [rooms]="roomList" [price]="priceFilter.value"></app-rooms-list>
+    <h3>Room Count : {{countRooms$ | async}}</h3>
+</div>
